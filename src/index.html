@@ -9,7 +9,7 @@
     <title>Ecommerce shop</title>
 </head>
 <body>
-<header class="header">
+<header class="header" id="header">
     <div class="wrapper">
         <div class="header__navigation">
             <h2 class="nav__logo">LOGO</h2>
@@ -21,43 +21,51 @@
             <h2 class="cart"><i class="fas fa-shopping-cart"></i></h2>
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__element"><i class="fas fa-home"></i>Home</li>
-                    <li class="nav__element"><i class="fas fa-info-circle"></i>Why us?</li>
+                    <li class="nav__element"><a href="#header"><i class="fas fa-home"></i>Home</a></li>
+                    <li class="nav__element"><a href="#whyUs"><i class="fas fa-info-circle"></i>Why us?</a></li>
                     <li class="nav__element"><i class="fas fa-shopping-bag"></i>Shop</li>
                 </ul>
             </nav>
         </div>
         <div class="header__title">
-            <h1 class="header__main-text">Buy your own website template</h1>
-            <p class="header__additional-text">in just a few seconds.</p>
-            <button class="header__btn">Learn More</button>
+            <h1 class="header__main-text anim" data-anim="bottomToTop" data-delay=".1s">Buy your own website template</h1>
+            <p class="header__additional-text anim" data-anim="bottomToTop" data-delay=".12s">in just a few seconds.</p>
+            <button class="header__btn anim" data-anim="bottomToTop" data-delay=".12s">Learn More</button>
         </div>
-        <img class="header__img" src="src/assets/img/header.svg" alt="header-image"/>
-        <img class="header__body-img" src="src/assets/img/header-body.svg" alt="header-body"/>
+        <img class="header__img anim" src="src/assets/img/header.svg" data-anim="bottomToTop" data-delay=".1s" alt="header-image"/>
+        <img class="header__body-img anim" data-anim="bottomToTop" src="src/assets/img/header-body.svg" data-delay=".2s" alt="header-body"/>
     </div>
 </header>
-<section class="whyUs">
+<section class="whyUs" id="whyUs">
     <div class="wrapper">
         <img class="whyUs__img" src="src/assets/img/flower.svg" alt="flower img"/>
         <div class="whyUs__grid">
-            <h1 class="whyUs__title">Why us?</h1>
-            <div class="whyUs__row">
+            <h1 class="whyUs__title anim" data-anim="topToBottom" data-delay=".0s">Why us?</h1>
+            <div class="whyUs__row anim" data-anim="leftToRight" data-delay=".1s">
                 <i class="far fa-clock"></i>
                 <h2 class="whyUs__main-txt">Best performance</h2>
-                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, earum!</p>
+                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio,
+                    earum!</p>
             </div>
-            <div class="whyUs__row">
+            <div class="whyUs__row anim" data-anim="topToBottom" data-delay=".15s">
                 <i class="fas fa-pencil-alt"></i>
                 <h2 class="whyUs__main-txt">Easy to edit</h2>
-                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, earum!</p>
+                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio,
+                    earum!</p>
             </div>
-            <div class="whyUs__row">
+            <div class="whyUs__row anim" data-anim="rightToLeft" data-delay=".2s">
                 <i class="fas fa-headset"></i>
                 <h2 class="whyUs__main-txt">Lifetime support</h2>
-                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, earum!</p>
+                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio,
+                    earum!</p>
             </div>
         </div>
     </div>
 </section>
+<main class="cart">
+    <div class="wrapper">
+
+    </div>
+</main>
 </body>
 </html>

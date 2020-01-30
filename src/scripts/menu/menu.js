@@ -1,15 +1,15 @@
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav');
 const headerNavigation = document.querySelector('.header__navigation');
-const navTop = headerNavigation.offsetTop;
 const header = document.querySelector('.header');
+
 const handleClick = () => {
   hamburger.classList.toggle('hamburger--active');
   nav.classList.toggle('nav--active');
 };
 
 const stickyNavigation = () => {
-  if (window.scrollY >= navTop) {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     headerNavigation.classList.add('header__navigation--active');
     header.style.paddingTop = `${headerNavigation.offsetHeight - 20}px`;
   } else {
