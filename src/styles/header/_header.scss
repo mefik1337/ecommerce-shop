@@ -51,7 +51,7 @@
     opacity: 95%;
     transition: background-color .2s .1s ease-in;
 
-    .cart {
+    .nav__cart {
       color: #fdfdfd;
     }
 
@@ -69,12 +69,11 @@
       a {
         color: #fdfdfd;
         transition: color .1s ease-in;
-
+        padding: 10px 40px;
         &:hover {
           color: darken(#fdfdfd, 5%);
         }
       }
-
       @media only screen and (min-width: 768px) {
         color: #fdfdfd;
       }
@@ -100,9 +99,9 @@
     z-index: 1;
     @media only screen and (min-width: 768px) {
       position: absolute;
-      width: 60%;
+      width: 55%;
       height: 60%;
-      left: 35%;
+      left: 43%;
       top: 24%;
     }
   }
@@ -220,6 +219,7 @@
     a {
       color: #fdfdfd;
       text-decoration: none;
+      padding: 10px 40px;
     }
 
     i {
@@ -236,11 +236,14 @@
       }
       a {
         color: #6C63FF;
+        padding: 0;
       }
     }
   }
 }
-
+.cart__counter {
+  margin-left: 10px;
+}
 .header__body-img {
   width: 100%;
 }
@@ -270,7 +273,7 @@
   transform: translateX(0px);
 }
 
-.cart {
+.nav__cart{
   color: #6C63FF;
   font-size: 1.2rem;
   @media only screen and (min-width: 768px) {

@@ -18,7 +18,7 @@
                     <span class="hamburger__inner"></span>
                 </span>
             </button>
-            <h2 class="cart"><i class="fas fa-shopping-cart"></i></h2>
+            <h2 class="nav__cart"><i class="fas fa-shopping-cart"></i><span class="cart__counter">0</span></h2>
             <nav class="nav">
                 <ul class="nav__list">
                     <li class="nav__element"><a href="#header"><i class="fas fa-home"></i>Home</a></li>
@@ -28,12 +28,15 @@
             </nav>
         </div>
         <div class="header__title">
-            <h1 class="header__main-text anim" data-anim="bottomToTop" data-delay=".1s">Buy your own website template</h1>
+            <h1 class="header__main-text anim" data-anim="bottomToTop" data-delay=".1s">Buy your own website
+                template</h1>
             <p class="header__additional-text anim" data-anim="bottomToTop" data-delay=".12s">in just a few seconds.</p>
             <button class="header__btn anim" data-anim="bottomToTop" data-delay=".12s">Learn More</button>
         </div>
-        <img class="header__img anim" src="src/assets/img/header.svg" data-anim="bottomToTop" data-delay=".1s" alt="header-image"/>
-        <img class="header__body-img anim" data-anim="bottomToTop" src="src/assets/img/header-body.svg" data-delay=".2s" alt="header-body"/>
+        <img class="header__img anim" src="src/assets/img/header.svg" data-anim="bottomToTop" data-delay=".1s"
+             alt="header-image"/>
+        <img class="header__body-img anim" data-anim="bottomToTop" src="src/assets/img/header-body.svg" data-delay=".2s"
+             alt="header-body"/>
     </div>
 </header>
 <section class="whyUs" id="whyUs">
@@ -62,9 +65,38 @@
         </div>
     </div>
 </section>
-<main class="cart">
+<main class="cart" id="cart">
     <div class="wrapper">
-
+        <div class="cart__container">
+            <h2 class="cart__featured">Featured products</h2>
+            <div class="cart__item">
+                <div class="cart__img-holder">
+                    <img src="src/assets/img/cart-img-1.jpg" alt="cart img"/>
+                </div>
+                <div class="cart__info">
+                    <p class="cart__info-name">Color template</p>
+                    <p class="cart__info-price">$ 15</p>
+                </div>
+            </div>
+            <div class="cart__item">
+                <div class="cart__img-holder">
+                    <img src="src/assets/img/cart-img-2.jpg" alt="cart img"/>
+                </div>
+                <div class="cart__info">
+                    <p class="cart__info-name">Color template</p>
+                    <p class="cart__info-price">$ 15</p>
+                </div>
+            </div>
+            <div class="cart__item">
+                <div class="cart__img-holder">
+                    <img src="src/assets/img/cart-img-3.jpg" alt="cart img"/>
+                </div>
+                <div class="cart__info">
+                    <p class="cart__info-name">Color template</p>
+                    <p class="cart__info-price">$ 15</p>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 </body>
