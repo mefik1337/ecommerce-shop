@@ -1,5 +1,5 @@
 .cart {
-  height: 70vh;
+  height: 80vh;
 }
 .cart__featured {
   align-self: center;
@@ -12,14 +12,18 @@
 .cart__info {
   display: flex;
   justify-content: space-between;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: lighten(#6C63FF, 10%);
+  transition: color .2s ease-in;
 }
 .cart__item {
-  &:first-of-type {
+  &:nth-child(0n +1) {
     @media only screen and (min-width: 768px) {
       margin-top: 40%;
     }
   }
-  &:last-of-type{
+  &:nth-child(2n){
     margin-bottom: 50px;
     @media only screen and (min-width: 768px) {
       margin-bottom: 0;
@@ -33,17 +37,73 @@
   justify-content: center;
   align-items: center;
   height: 70vh;
-  grid-gap: 20px;
+  grid-gap: 40px;
   @media only screen and (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
+.cart__img-body {
+  transform: rotate(0);
+  transition: transform .3s ease-in;
+  &:hover {
+    transform: rotate(-6deg);
+    .cart__buy-btn{
+      visibility: visible;
+    }
+    .cart__img-holder {
+      &::before {
+        visibility: visible;
+        background-color: #6C63FF;
+        border-radius: 10px;
+        opacity: 0.3;
+      }
+    }
+    .cart__info {
+      color: #6C63FF;
+    }
+  }
+}
 .cart__img-holder {
   width: 100%;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition:opacity .5s;
+  }
   img {
     width: 100%;
     justify-items: center;
     align-items: center;
+    border-radius: 10px;
+    @media only screen and (min-width: 768px) {
+      height: 40vh;
+    }
   }
+}
+.cart__featured {
+  color: #6C63FF;
+  font-family: Montserrat, 'sans-serif';
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.cart__buy-btn {
+  position: absolute;
+  visibility: hidden;
+  bottom: 69px;
+  right: 0;
+  background-color: #fdfdfd;
+  border: 1px solid #6C63FF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #6C63FF;
+  border-radius: 10px;
+  padding: 5px 15px;
+  cursor: pointer;
 }

@@ -6,8 +6,8 @@ const observer = new IntersectionObserver(entries => {
     const {
       dataset: { anim, delay },
     } = target;
-    if (!entry.isIntersecting) target.style.animation = 'none';
-    else target.style.animation = `${anim} .5s ${delay} forwards ease-out`;
+    if (!entry.isIntersecting) return;
+    target.style.animation = `${anim} .5s ${delay} forwards ease-out`;
   });
 });
 
