@@ -38,11 +38,22 @@ const displayCounterToCart = () => {
   counter.innerText = localStorage.getItem('Cart Value');
 };
 
+const getTotalCost = product => {
+  let totalCost = localStorage.getItem('totalCost');
+  if (totalCost !== null) {
+    totalCost = parseInt(totalCost, 10);
+    localStorage.setItem('totalCost', totalCost + product.price);
+  } else {
+    localStorage.setItem('totalCost', product.price);
+  }
+};
+
 cartBtn.forEach(btn => {
   const dataId = btn.dataset.id;
   const eachProduct = products[dataId];
   btn.addEventListener('click', () => {
     cartCounterToStorage(eachProduct);
+    getTotalCost(eachProduct);
   });
 });
 
