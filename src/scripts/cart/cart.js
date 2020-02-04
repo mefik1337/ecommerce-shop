@@ -4,9 +4,20 @@ const cartBtn = document.querySelectorAll('.cart__buy-btn');
 const counter = document.querySelector('.cart__counter');
 
 const passTheProduct = product => {
-  const cartItems = {
-    [product.id]: product,
-  };
+  const { id } = product;
+  let cartItems = localStorage.getItem('InCart');
+  cartItems = JSON.parse(cartItems);
+  if (cartItems !== null) {
+    if (typeof cartItems[id] === 'undefined')
+      cartItems = { ...cartItems, [product.id]: product };
+    cartItems[id].inCart += 1;
+  } else {
+    // eslint-disable-next-line no-param-reassign
+    product.inCart = 1;
+    cartItems = {
+      [product.id]: product,
+    };
+  }
   localStorage.setItem('InCart', JSON.stringify(cartItems));
 };
 

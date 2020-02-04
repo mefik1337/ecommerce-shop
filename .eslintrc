@@ -6,11 +6,11 @@
     "node": true
   },
   "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module"
+    "ecmaVersion": 2019,
+    "sourceType": "module",
   },
   "rules": {
     "semi": 2,
     "prettier/prettier": ["error"]
-  }
+  },
 }
