@@ -276,6 +276,10 @@
 .nav__cart{
   color: #6C63FF;
   font-size: 1.2rem;
+  a {
+    color: #6C63FF;
+    text-decoration: none;
+  }
   @media only screen and (min-width: 768px) {
     order: 3
   }
