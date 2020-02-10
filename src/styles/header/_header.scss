@@ -1,7 +1,7 @@
 .header {
   height: 100vh;
   @media only screen and (min-width: 768px) {
-    &::after {
+    .header__ball {
       content: '';
       position: absolute;
       bottom: -90px;
@@ -52,7 +52,9 @@
     transition: all .3s ease-in;
     border-bottom: 1px solid lighten(#6C63FF, 10%);
     .nav__cart {
-      color: #fdfdfd;
+      a {
+        color: #fdfdfd;
+      }
     }
 
     .hamburger__inner,

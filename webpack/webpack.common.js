@@ -24,7 +24,14 @@ module.exports = {
       { from: Path.resolve(__dirname, '../public'), to: 'public' },
     ]),
     new HtmlWebpackPlugin({
+      // Also generate a test.html
+      filename: 'index.html',
       template: Path.resolve(__dirname, '../src/index.html'),
+    }),
+    new HtmlWebpackPlugin({
+      // Also generate a test.html
+      filename: 'cart.html',
+      template: Path.resolve(__dirname, '../src/cart.html'),
     }),
   ],
   resolve: {
