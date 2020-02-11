@@ -9,7 +9,7 @@
     <title>Ecommerce shop</title>
 </head>
 <body>
-<header class="header" id="header">
+<header class="header" style="height: 12vh" id="header">
     <div class="wrapper">
         <div class="header__navigation header__navigation--active">
             <h2 class="nav__logo">LOGO</h2>
@@ -18,17 +18,84 @@
                     <span class="hamburger__inner"></span>
                 </span>
             </button>
-            <h2 class="nav__cart"><a href="cart.html"><i class="fas fa-shopping-cart"></i><span class="cart__counter">0</span></a></h2>
+            <h2 class="nav__cart"><a href="cart.html"><i class="fas fa-shopping-cart"></i><span
+                    class="cart__counter">0</span></a></h2>
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__element"><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-                    <li class="nav__element"><a href="index.html#whyUs"><i class="fas fa-info-circle"></i>Why us?</a></li>
+                    <li class="nav__element"><a href="index.html#header"><i class="fas fa-home"></i>Home</a></li>
+                    <li class="nav__element"><a href="index.html#whyUs"><i class="fas fa-info-circle"></i>Why us?</a>
+                    </li>
                     <li class="nav__element"><a href="index.html#cart"><i class="fas fa-shopping-bag"></i>Shop</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 </header>
-
+<section class="order" id="order">
+    <div class="wrapper">
+        <p class="order__text">Cart</p>
+        <div class="order__row">
+            <div class="order__title">
+                <p class="order__name">Product</p>
+                <div class="order__overall">
+                    <p class="order__quantity">Quantity</p>
+                    <p class="order__price">Price</p>
+                </div>
+            </div>
+            <div class="order__item">
+                <p class="product__name">Website template</p>
+                <div class="product__overall">
+                    <span class="product__quantity">Quantity:</span>
+                    <button class="product__minus">-</button>
+                    1
+                    <button class="product__plus">+</button>
+                    <p class="product__price">Price: <span>$10</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="order__row">
+            <div class="order__title">
+                <p class="order__name">Product</p>
+                <div class="order__overall">
+                    <p class="order__quantity">Quantity</p>
+                    <p class="order__price">Price</p>
+                </div>
+            </div>
+            <div class="order__item">
+                <p class="product__name">Website template</p>
+                <div class="product__overall">
+                    <span class="product__quantity">Quantity:</span>
+                    <button class="product__minus">-</button>
+                    1
+                    <button class="product__plus">+</button>
+                    <p class="product__price">Price: <span>$10</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="order__row">
+            <div class="order__title">
+                <p class="order__name">Product</p>
+                <div class="order__overall">
+                    <p class="order__quantity">Quantity</p>
+                    <p class="order__price">Price</p>
+                </div>
+            </div>
+            <div class="order__item">
+                <p class="product__name">Website template</p>
+                <div class="product__overall">
+                    <span class="product__quantity">Quantity:</span>
+                    <button class="product__minus">-</button>
+                    1
+                    <button class="product__plus">+</button>
+                    <p class="product__price">Price: <span>$10</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="order__overall">
+            <p class="order__total">Total: <span class="order__total-text">$0</span></p>
+            <button class="order__proceed">Proceed...</button>
+        </div>
+    </div>
+</section>
 </body>
 </html>
