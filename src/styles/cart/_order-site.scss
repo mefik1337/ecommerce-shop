@@ -7,40 +7,35 @@
   font-family: Roboto, sans-serif;
   color: #6C63FF;
 }
-.order__quantity{
-  display: none;
-}
-.order__name {
-  display: none;
-  @media only screen and (min-width: 768px) {
-    display: block;
-  }
-}
 .order__row {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  @media only screen and (min-width: 768px) {
+    justify-content: flex-start;
+  }
 }
 .order__title{
   order: 2;
   align-self: flex-end;
 }
 
-.order__price {
-  display: none;
-  @media only screen and (min-width: 768px) {
-    display: block;
-  }
-}
 .order__item {
   border: 1px solid #6C63FF;
   padding: 20px;
   border-radius: 5px;
+  @media only screen and (min-width: 768px) {
+    width: 100%;
+  }
 }
 .product__overall{
   display: flex;
   align-items: center;
   margin-top: 20px;
+  @media only screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+
 }
 .product__price{
   margin-left: 20px;
@@ -64,6 +59,11 @@
     right: -20px;
     top: 25px;
   }
+  @media only screen and (min-width: 768px) {
+    &::after {
+      display: none;
+    }
+  }
 }
 
 .product__minus,
@@ -74,6 +74,7 @@
   font-weight: 700;
   padding: 10px;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 .order__overall{
   display: flex;

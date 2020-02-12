@@ -38,7 +38,7 @@ const displayCounterToCart = () => {
   counter.innerText = localStorage.getItem('Cart Value');
 };
 
-const getTotalCost = product => {
+const setTotalCost = product => {
   let totalCost = localStorage.getItem('totalCost');
   if (totalCost !== null) {
     totalCost = parseInt(totalCost, 10);
@@ -53,7 +53,7 @@ cartBtn.forEach(btn => {
   const eachProduct = products[dataId];
   btn.addEventListener('click', () => {
     cartCounterToStorage(eachProduct);
-    getTotalCost(eachProduct);
+    setTotalCost(eachProduct);
   });
 });
 
