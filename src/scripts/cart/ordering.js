@@ -1,11 +1,34 @@
-const total = document.querySelector('.order__total-text');
 const order = document.querySelector('.order__column');
 
-const getTotalCost = () => {
+const updateTotalCost = () => {
   const totalCost = localStorage.getItem('totalCost');
+  const total = document.querySelector('.order__total-text');
   if (totalCost && order) total.innerText = `$ ${totalCost}`;
 };
-
+const addQuantity = e => {
+  e.preventDefault();
+  const quantityText = document.querySelectorAll('.product__quantity-text');
+  let cartItems = localStorage.getItem('InCart');
+  let totalCost = localStorage.getItem('totalCost');
+  totalCost = parseInt(totalCost, 10);
+  cartItems = JSON.parse(cartItems);
+  const filteredItems = Object.values(cartItems).filter(
+    item => item.id === e.target.dataset.tag
+  );
+  const eachElement = cartItems[filteredItems[0].id];
+  if (filteredItems) {
+    eachElement.inCart += 1;
+    localStorage.setItem('InCart', JSON.stringify(cartItems));
+    const { price } = eachElement;
+    localStorage.setItem('totalCost', totalCost + parseInt(price, 10));
+  }
+  quantityText.forEach(item => {
+    if (item.dataset.tag === e.target.dataset.tag) {
+      // eslint-disable-next-line no-param-reassign
+      item.innerHTML = eachElement.inCart;
+    }
+  });
+};
 const getInCartItems = () => {
   let inCart = localStorage.getItem('InCart');
   inCart = JSON.parse(inCart);
@@ -24,7 +47,9 @@ const getInCartItems = () => {
                         <button class="product__minus" data-tag="${
                           item.id
                         }">-</button>
-                        ${item.inCart}
+                        <span class="product__quantity-text" data-tag="${
+                          item.id
+                        }">${item.inCart}</span>
                         <button class="product__plus" data-tag="${
                           item.id
                         }">+</button>
@@ -38,6 +63,14 @@ const getInCartItems = () => {
     );
   }
 };
-
+document.querySelector('body').addEventListener('click', event => {
+  if (!event.target) {
+    return;
+  }
+  if (event.target.matches('.product__plus')) {
+    addQuantity(event);
+    updateTotalCost();
+  }
+});
 getInCartItems();
-getTotalCost();
+updateTotalCost();
