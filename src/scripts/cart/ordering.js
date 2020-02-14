@@ -67,10 +67,10 @@ const minusQuantity = e => {
       item.innerHTML = `$ ${eachElement.inCart * eachElement.price}`;
     }
   });
-  if (eachElement.inCart - 1 < 1) {
-    const newLocal = [];
-    newLocal.push(cartItems);
-    console.log(newLocal);
+  if (eachElement.inCart < 1) {
+    const element = cartItems;
+    delete element[e.target.dataset.tag];
+    localStorage.setItem('InCart', JSON.stringify(element));
   }
 };
 const getInCartItems = () => {
