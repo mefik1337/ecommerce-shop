@@ -18,10 +18,9 @@ const addQuantity = e => {
   );
   const eachElement = cartItems[filteredItems[0].id];
   if (filteredItems) {
+    const { price } = eachElement;
     eachElement.inCart += 1;
     localStorage.setItem('InCart', JSON.stringify(cartItems));
-    // eslint-disable-next-line no-shadow
-    const { price } = eachElement;
     localStorage.setItem('totalCost', totalCost + parseInt(price, 10));
   }
   quantityText.forEach(item => {
@@ -37,6 +36,42 @@ const addQuantity = e => {
       item.innerHTML = `$ ${eachElement.inCart * eachElement.price}`;
     }
   });
+};
+const minusQuantity = e => {
+  e.preventDefault();
+  const quantityText = document.querySelectorAll('.product__quantity-text');
+  let cartItems = localStorage.getItem('InCart');
+  let totalCost = localStorage.getItem('totalCost');
+  totalCost = parseInt(totalCost, 10);
+  cartItems = JSON.parse(cartItems);
+  const filteredItems = Object.values(cartItems).filter(
+    item => item.id === e.target.dataset.tag
+  );
+  const eachElement = cartItems[filteredItems[0].id];
+  if (filteredItems) {
+    const { price } = eachElement;
+    eachElement.inCart -= 1;
+    localStorage.setItem('InCart', JSON.stringify(cartItems));
+    localStorage.setItem('totalCost', totalCost - parseInt(price, 10));
+  }
+  quantityText.forEach(item => {
+    if (item.dataset.tag === e.target.dataset.tag) {
+      // eslint-disable-next-line no-param-reassign
+      item.innerHTML = eachElement.inCart;
+    }
+  });
+  const price = document.querySelectorAll('.product__price-text');
+  price.forEach(item => {
+    if (e.target.dataset.tag === item.dataset.tag) {
+      // eslint-disable-next-line no-param-reassign
+      item.innerHTML = `$ ${eachElement.inCart * eachElement.price}`;
+    }
+  });
+  if (eachElement.inCart - 1 < 1) {
+    const newLocal = [];
+    newLocal.push(cartItems);
+    console.log(newLocal);
+  }
 };
 const getInCartItems = () => {
   let inCart = localStorage.getItem('InCart');
@@ -80,6 +115,10 @@ document.querySelector('body').addEventListener('click', event => {
   }
   if (event.target.matches('.product__plus')) {
     addQuantity(event);
+    updateTotalCost();
+  }
+  if (event.target.matches('.product__minus')) {
+    minusQuantity(event);
     updateTotalCost();
   }
 });
