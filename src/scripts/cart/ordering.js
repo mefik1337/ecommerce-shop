@@ -1,14 +1,35 @@
 const order = document.querySelector('.order__column');
-
+const proceedBtn = document.querySelector('.order__proceed');
 const updateTotalCost = () => {
   const totalCost = localStorage.getItem('totalCost');
   const total = document.querySelector('.order__total-text');
   if (totalCost && order) total.innerText = `$ ${totalCost}`;
 };
 
+const changeSinglePrice = e => {
+  const quantityText = document.querySelectorAll('.product__quantity-text');
+  let cartItems = localStorage.getItem('InCart');
+  cartItems = JSON.parse(cartItems);
+  const filteredItems = Object.values(cartItems).filter(
+    item => item.id === e.target.dataset.tag
+  );
+  const eachElement = cartItems[filteredItems[0].id];
+  quantityText.forEach(item => {
+    if (item.dataset.tag === e.target.dataset.tag) {
+      // eslint-disable-next-line no-param-reassign
+      item.innerHTML = eachElement.inCart;
+    }
+  });
+  const price = document.querySelectorAll('.product__price-text');
+  price.forEach(item => {
+    if (e.target.dataset.tag === item.dataset.tag) {
+      // eslint-disable-next-line no-param-reassign
+      item.innerHTML = `$ ${eachElement.inCart * eachElement.price}`;
+    }
+  });
+};
 const addQuantity = e => {
   e.preventDefault();
-  const quantityText = document.querySelectorAll('.product__quantity-text');
   const counter = document.querySelector('.cart__counter');
   let cartItems = localStorage.getItem('InCart');
   let totalCost = localStorage.getItem('totalCost');
@@ -19,32 +40,20 @@ const addQuantity = e => {
   const filteredItems = Object.values(cartItems).filter(
     item => item.id === e.target.dataset.tag
   );
-  const eachElement = cartItems[filteredItems[0].id];
   if (filteredItems) {
+    const eachElement = cartItems[filteredItems[0].id];
     const { price } = eachElement;
     eachElement.inCart += 1;
     localStorage.setItem('Cart Value', cartValue + 1);
     counter.innerText = cartValue + 1;
     localStorage.setItem('InCart', JSON.stringify(cartItems));
     localStorage.setItem('totalCost', totalCost + parseInt(price, 10));
+    changeSinglePrice(e);
   }
-  quantityText.forEach(item => {
-    if (item.dataset.tag === e.target.dataset.tag) {
-      // eslint-disable-next-line no-param-reassign
-      item.innerHTML = eachElement.inCart;
-    }
-  });
-  const price = document.querySelectorAll('.product__price-text');
-  price.forEach(item => {
-    if (e.target.dataset.tag === item.dataset.tag) {
-      // eslint-disable-next-line no-param-reassign
-      item.innerHTML = `$ ${eachElement.inCart * eachElement.price}`;
-    }
-  });
+  updateTotalCost();
 };
 const minusQuantity = e => {
   e.preventDefault();
-  const quantityText = document.querySelectorAll('.product__quantity-text');
   let cartItems = localStorage.getItem('InCart');
   let totalCost = localStorage.getItem('totalCost');
   const counter = document.querySelector('.cart__counter');
@@ -55,35 +64,32 @@ const minusQuantity = e => {
   const filteredItems = Object.values(cartItems).filter(
     item => item.id === e.target.dataset.tag
   );
-  const eachElement = cartItems[filteredItems[0].id];
   if (filteredItems) {
+    const eachElement = cartItems[filteredItems[0].id];
     const { price } = eachElement;
     eachElement.inCart -= 1;
     localStorage.setItem('Cart Value', cartValue - 1);
     counter.innerText = cartValue - 1;
     localStorage.setItem('InCart', JSON.stringify(cartItems));
     localStorage.setItem('totalCost', totalCost - parseInt(price, 10));
+    changeSinglePrice(e);
   }
-  quantityText.forEach(item => {
-    if (item.dataset.tag === e.target.dataset.tag) {
-      // eslint-disable-next-line no-param-reassign
-      item.innerHTML = eachElement.inCart;
-    }
-  });
-  const price = document.querySelectorAll('.product__price-text');
-  price.forEach(item => {
-    if (e.target.dataset.tag === item.dataset.tag) {
-      // eslint-disable-next-line no-param-reassign
-      item.innerHTML = `$ ${eachElement.inCart * eachElement.price}`;
-    }
-  });
-  if (eachElement.inCart < 1) {
+  if (cartItems[e.target.dataset.tag].inCart < 1) {
     const element = cartItems;
     delete element[e.target.dataset.tag];
     localStorage.setItem('InCart', JSON.stringify(element));
     e.target.parentElement.parentElement.parentElement.remove();
   }
+  updateTotalCost();
 };
+const proceedItems = () => {
+  // eslint-disable-next-line no-alert
+  alert('Successful proceed!');
+  localStorage.clear();
+  // eslint-disable-next-line no-restricted-globals
+  location.reload();
+};
+
 const getInCartItems = () => {
   let inCart = localStorage.getItem('InCart');
   inCart = JSON.parse(inCart);
@@ -126,12 +132,13 @@ document.querySelector('body').addEventListener('click', event => {
   }
   if (event.target.matches('.product__plus')) {
     addQuantity(event);
-    updateTotalCost();
   }
   if (event.target.matches('.product__minus')) {
     minusQuantity(event);
-    updateTotalCost();
   }
 });
-getInCartItems();
-updateTotalCost();
+if (proceedBtn) {
+  proceedBtn.addEventListener('click', proceedItems);
+  getInCartItems();
+  updateTotalCost();
+}

@@ -1,5 +1,7 @@
 .cart {
-  height: 80vh;
+  @media only screen and (min-width: 768px) {
+    height: 80vh;
+  }
 }
 .cart__featured {
   align-self: center;
@@ -24,11 +26,14 @@
     }
   }
   &:nth-child(2n){
-    margin-bottom: 50px;
+    margin-bottom: 0;
     @media only screen and (min-width: 768px) {
       margin-bottom: 0;
       margin-top: 50%;
     }
+  }
+  &:last-of-type {
+    margin-bottom: 50px;
   }
 }
 .cart__container {
@@ -36,7 +41,6 @@
   margin-top: 50px;
   justify-content: center;
   align-items: center;
-  height: 70vh;
   grid-gap: 40px;
   @media only screen and (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
@@ -45,6 +49,12 @@
 .cart__img-body {
   transform: rotate(0);
   transition: transform .3s ease-in;
+  width: 80%;
+  margin-left: 10%;
+  @media only screen and (min-width: 768px) {
+    width: 100%;
+    margin-left: 0;
+  }
   &:hover {
     transform: rotate(-6deg);
     .cart__buy-btn{
