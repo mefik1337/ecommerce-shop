@@ -9,8 +9,11 @@ const updateTotalCost = () => {
 const addQuantity = e => {
   e.preventDefault();
   const quantityText = document.querySelectorAll('.product__quantity-text');
+  const counter = document.querySelector('.cart__counter');
   let cartItems = localStorage.getItem('InCart');
   let totalCost = localStorage.getItem('totalCost');
+  let cartValue = localStorage.getItem('Cart Value');
+  cartValue = parseInt(cartValue, 10);
   totalCost = parseInt(totalCost, 10);
   cartItems = JSON.parse(cartItems);
   const filteredItems = Object.values(cartItems).filter(
@@ -20,6 +23,8 @@ const addQuantity = e => {
   if (filteredItems) {
     const { price } = eachElement;
     eachElement.inCart += 1;
+    localStorage.setItem('Cart Value', cartValue + 1);
+    counter.innerText = cartValue + 1;
     localStorage.setItem('InCart', JSON.stringify(cartItems));
     localStorage.setItem('totalCost', totalCost + parseInt(price, 10));
   }
@@ -42,6 +47,9 @@ const minusQuantity = e => {
   const quantityText = document.querySelectorAll('.product__quantity-text');
   let cartItems = localStorage.getItem('InCart');
   let totalCost = localStorage.getItem('totalCost');
+  const counter = document.querySelector('.cart__counter');
+  let cartValue = localStorage.getItem('Cart Value');
+  cartValue = parseInt(cartValue, 10);
   totalCost = parseInt(totalCost, 10);
   cartItems = JSON.parse(cartItems);
   const filteredItems = Object.values(cartItems).filter(
@@ -51,6 +59,8 @@ const minusQuantity = e => {
   if (filteredItems) {
     const { price } = eachElement;
     eachElement.inCart -= 1;
+    localStorage.setItem('Cart Value', cartValue - 1);
+    counter.innerText = cartValue - 1;
     localStorage.setItem('InCart', JSON.stringify(cartItems));
     localStorage.setItem('totalCost', totalCost - parseInt(price, 10));
   }
@@ -71,6 +81,7 @@ const minusQuantity = e => {
     const element = cartItems;
     delete element[e.target.dataset.tag];
     localStorage.setItem('InCart', JSON.stringify(element));
+    e.target.parentElement.parentElement.parentElement.remove();
   }
 };
 const getInCartItems = () => {
