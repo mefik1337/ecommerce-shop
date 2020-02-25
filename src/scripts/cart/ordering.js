@@ -82,6 +82,27 @@ const minusQuantity = e => {
   }
   updateTotalCost();
 };
+const deleteOneItem = e => {
+  let cartItems = localStorage.getItem('InCart');
+  const counter = document.querySelector('.cart__counter');
+  let totalCost = localStorage.getItem('totalCost');
+  let cartValue = localStorage.getItem('Cart Value');
+  const total = document.querySelector('.order__total-text');
+  cartValue = parseInt(cartValue, 10);
+  totalCost = parseInt(totalCost, 10);
+  cartItems = JSON.parse(cartItems);
+  const item = cartItems;
+  const cartItem = item[e.target.parentElement.dataset.tag];
+  const inCart = parseInt(cartItem.inCart, 10);
+  const price = parseInt(cartItem.price, 10);
+  localStorage.setItem('Cart Value', cartValue - inCart);
+  localStorage.setItem('totalCost', totalCost - price * inCart);
+  delete item[e.target.parentElement.dataset.tag];
+  localStorage.setItem('InCart', JSON.stringify(item));
+  counter.innerText = `${cartValue - inCart}`;
+  total.innerText = `$ ${totalCost - price * inCart}`;
+  e.target.parentElement.remove();
+};
 const proceedItems = () => {
   // eslint-disable-next-line no-alert
   alert('Successful proceed!');
@@ -98,7 +119,7 @@ const getInCartItems = () => {
       // eslint-disable-next-line no-return-assign
       item =>
         (order.innerHTML += `
-                <div class="order__row">
+                <div class="order__row" data-tag="${item.id}">
                 <div class="order__item">
                     <p class="product__name" data-tag="${item.id}">${
           item.name
@@ -120,6 +141,7 @@ const getInCartItems = () => {
           item.inCart}</span></p>
                     </div>
                 </div>
+                <button class="order__btn--close">X</button>
             </div>
         </div>
     `)
@@ -135,6 +157,9 @@ document.querySelector('body').addEventListener('click', event => {
   }
   if (event.target.matches('.product__minus')) {
     minusQuantity(event);
+  }
+  if (event.target.matches('.order__btn--close')) {
+    deleteOneItem(event);
   }
 });
 if (proceedBtn) {

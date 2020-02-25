@@ -8,6 +8,7 @@
   color: #6C63FF;
 }
 .order__row {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-top: 40px;
@@ -94,4 +95,28 @@
   color: #6C63FF;
   font-family: "Montserrat",sans-serif;
   font-weight: 700;
+}
+
+.order__btn--close {
+  position: absolute;
+  border: none;
+  font-size: 1.2rem;
+  align-self: flex-start;
+  color: #6C63FF;
+  font-weight: 700;
+  background-color: transparent;
+  right: 10%;
+  cursor: pointer;
+  @media only screen and (min-width: 768px) {
+    right: 0;
+  }
+  @media only screen and (min-width: 319px) and (max-width: 359px) {
+    right: 3%;
+  }
+  @media only screen and (min-width: 400px) and (max-width: 767px) {
+    right: 14%;
+  }
+  @media only screen and (min-width: 360px) and (max-width:  399px){
+    right: 10%;
+  }
 }
