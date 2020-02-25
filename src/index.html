@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <title>Ecommerce shop</title>
+</head>
+<body>
+<header class="header" id="header">
+    <div class="wrapper">
+        <div class="header__navigation">
+            <h2 class="nav__logo">LOGO</h2>
+            <button class="hamburger">
+                <span class="hamburger__box">
+                    <span class="hamburger__inner"></span>
+                </span>
+            </button>
+            <h2 class="nav__cart"><a href="cart.html#order"><i class="fas fa-shopping-cart"></i><span class="cart__counter">0</span></a></h2>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__element"><a href="#header"><i class="fas fa-home"></i>Home</a></li>
+                    <li class="nav__element"><a href="#whyUs"><i class="fas fa-info-circle"></i>Why us?</a></li>
+                    <li class="nav__element"><a href="#cart"><i class="fas fa-shopping-bag"></i>Shop</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header__title">
+            <h1 class="header__main-text anim" data-anim="bottomToTop" data-delay=".1s">Buy your own website
+                template</h1>
+            <p class="header__additional-text anim" data-anim="bottomToTop" data-delay=".12s">in just a few seconds.</p>
+            <button class="header__btn anim" data-anim="bottomToTop" data-delay=".12s">Learn More</button>
+        </div>
+        <img class="header__img anim" src="src/assets/img/header.svg" data-anim="bottomToTop" data-delay=".1s"
+             alt="header-image"/>
+        <img class="header__body-img anim" data-anim="bottomToTop" src="src/assets/img/header-body.svg" data-delay=".2s"
+             alt="header-body"/>
+        <div class="header__ball" ></div>
+    </div>
+</header>
+<section class="whyUs" id="whyUs">
+    <div class="wrapper">
+        <img class="whyUs__img" src="src/assets/img/flower.svg" alt="flower img"/>
+        <div class="whyUs__grid">
+            <h1 class="whyUs__title anim" data-anim="topToBottom" data-delay=".0s">Why us?</h1>
+            <div class="whyUs__row anim" data-anim="leftToRight" data-delay=".1s">
+                <i class="far fa-clock"></i>
+                <h2 class="whyUs__main-txt">Best performance</h2>
+                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio,
+                    earum!</p>
+            </div>
+            <div class="whyUs__row anim" data-anim="topToBottom" data-delay=".15s">
+                <i class="fas fa-pencil-alt"></i>
+                <h2 class="whyUs__main-txt">Easy to edit</h2>
+                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio,
+                    earum!</p>
+            </div>
+            <div class="whyUs__row anim" data-anim="rightToLeft" data-delay=".2s">
+                <i class="fas fa-headset"></i>
+                <h2 class="whyUs__main-txt">Lifetime support</h2>
+                <p class="whyUs__additional-txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio,
+                    earum!</p>
+            </div>
+        </div>
+    </div>
+</section>
+<main class="cart" id="cart">
+    <div class="wrapper">
+        <div class="cart__container">
+            <h2 class="cart__featured">Featured products</h2>
+            <div class="cart__item">
+                <div class="cart__img-body">
+                    <div class="cart__img-holder">
+                        <img src="src/assets/img/cart-img-1.jpg" alt="cart img"/>
+                        <button data-id="0" class="cart__buy-btn">Add to basket...</button>
+                    </div>
+                    <div class="cart__info">
+                        <p class="cart__info-name">Corpo template</p>
+                        <p class="cart__info-price">$ 10</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cart__item">
+                <div class="cart__img-body">
+                    <div class="cart__img-holder">
+                        <img src="src/assets/img/cart-img-2.jpg" alt="cart img"/>
+                        <button data-id="1" class="cart__buy-btn">Add to basket...</button>
+                    </div>
+                    <div class="cart__info">
+                        <p class="cart__info-name">Color template</p>
+                        <p class="cart__info-price">$ 20</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cart__item">
+                <div class="cart__img-body">
+                    <div class="cart__img-holder">
+                        <img src="src/assets/img/cart-img-3.jpg" alt="cart img"/>
+                        <button data-id="2" class="cart__buy-btn">Add to basket...</button>
+                    </div>
+                    <div class="cart__info">
+                        <p class="cart__info-name">Family template</p>
+                        <p class="cart__info-price">$ 25</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="wrapper">
+        <h3 class="footer_text">Created by Mateusz Szczech</h3>
+    </div>
+</footer>
+</body>
+</html>
